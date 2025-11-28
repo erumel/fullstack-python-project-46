@@ -1,0 +1,33 @@
+{
+  "name": "fullstack-python-project-46",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "homepage": "https://github.com/erumel/fullstack-python-project-46#readme",
+  "bugs": {
+    "url": "https://github.com/erumel/fullstack-python-project-46/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erumel/fullstack-python-project-46.git"
+  },
+  "license": "ISC",
+  "author": "erumel",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "scripts": {
+    "lint": "eslint bin/ src/",
+    "lint:fix": "eslint bin/ src/ --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  }
+}

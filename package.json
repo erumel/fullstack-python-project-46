@@ -1,0 +1,28 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "homepage": "https://github.com/erumel/fullstack-python-project-46#readme",
+  "bugs": {
+    "url": "https://github.com/erumel/fullstack-python-project-46/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erumel/fullstack-python-project-46.git"
+  },
+  "license": "ISC",
+  "author": "Shutikhin Valery",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "commander": "^14.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@jest/globals": "^30.3.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.2.1",
+    "globals": "^17.5.0",
+    "jest": "^30.3.0"
+  }
+}

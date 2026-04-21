@@ -1,2 +1,5 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/erumel/fullstack-python-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/erumel/fullstack-python-project-46/actions)
+[![CI Status](https://github.com/erumel/fullstack-python-project-46/actions/workflows/ci.yml/badge.svg)](https://github.com/erumel/fullstack-python-project-46/actions/workflows/ci.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=erumel_fullstack-python-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=erumel_fullstack-python-project-46)
+[![Test Coverage](https://sonarcloud.io/api/project_badges/measure?project=erumel_fullstack-python-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=erumel_fullstack-python-project-46)

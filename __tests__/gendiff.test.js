@@ -27,4 +27,15 @@ describe('gendiff for flat files', () => {
     )
     expect(result).toEqual(expectedStylish)
   })
+  describe('gendiff for nested files', () => {
+    const expectedStylishNested = readFile('stylish_nested.txt')
+
+    test('json nested files comparison', () => {
+      const result = genDiff(
+        getFixturePath('file1_nested.json'),
+        getFixturePath('file2_nested.json'),
+      )
+      expect(result).toEqual(expectedStylishNested)
+    })
+  })
 })

@@ -2,9 +2,9 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import parse from './parsers.js'
 import build from './diff.js'
-import stylish from './formatters/stylish.js'
+import getFormatter from './formatters/index.js'
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const absolutePath1 = path.resolve(process.cwd(), filepath1)
   const absolutePath2 = path.resolve(process.cwd(), filepath2)
 
@@ -18,7 +18,10 @@ const genDiff = (filepath1, filepath2) => {
   const data2 = parse(content2, ext2)
 
   const tree = build(data1, data2)
-  return stylish(tree)
+
+  const formatter = getFormatter(formatName)
+
+  return formatter(tree)
 }
 
 export default genDiff

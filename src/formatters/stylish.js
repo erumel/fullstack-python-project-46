@@ -23,7 +23,7 @@ const stylish = (tree) => {
     }
   })
 
-  return `{\n${lines.join('\n')}\n`
+  return `{\n${lines.join('\n')}\n}`
 }
 
 export default stylish

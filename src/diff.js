@@ -10,6 +10,13 @@ const build = (obj1, obj2) => {
     if (!_.has(obj2, key)) {
       return { key, type: 'removed', value: obj1[key] }
     }
+    if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
+      return {
+        key,
+        type: 'nested',
+        children: build(obj1[key], obj2[key]),
+      }
+    }
     if (_.isEqual(obj1[key], obj2[key])) {
       return { key, type: 'unchanged', value: obj1[key] }
     }

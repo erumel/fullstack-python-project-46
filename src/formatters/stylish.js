@@ -1,29 +1,34 @@
-const stringify = (value) => {
-  if (typeof value === 'object' && value !== null) {
-    return '[complex value]'
-  }
-  return String(value)
+const stringify = (value, depth) => {
+  if (typeof value !== 'object' || value === null) return String(value)
+  const indent = ' '.repeat(depth * 4 - 2)
+  const bracketIndent = ' '.repeat((depth - 1) * 4)
+  const lines = Object.entries(value).map(
+    ([key, val]) => `${indent}  ${key}: ${stringify(val, depth + 1)}`,
+  )
+  return `{\n${lines.join('\n')}\n${bracketIndent}}`
 }
 
-const stylish = (tree) => {
+const format = (tree, depth = 1) => {
+  const indent = ' '.repeat(depth * 4 - 2)
+  const bracketIndent = ' '.repeat(depth * 4)
   const lines = tree.map((node) => {
-    const { key, type } = node
-
-    switch (type) {
+    switch (node.type) {
+      case 'nested':
+        return `${indent}  ${node.key}: {\n${format(node.children, depth + 1)}\n${bracketIndent}}`
       case 'added':
-        return `  + ${key}: ${stringify(node.value)}`
+        return `${indent}+ ${node.key}: ${stringify(node.value, depth + 1)}`
       case 'removed':
-        return `  - ${key}: ${stringify(node.value)}`
+        return `${indent}- ${node.key}: ${stringify(node.value, depth + 1)}`
       case 'changed':
-        return `  - ${key}: ${stringify(node.oldValue)}\n  + ${key}: ${stringify(node.newValue)}`
+        return `${indent}- ${node.key}: ${stringify(node.oldValue, depth + 1)}\n${indent}+ ${node.key}: ${stringify(node.newValue, depth + 1)}`
       case 'unchanged':
-        return `    ${key}: ${stringify(node.value)}`
-      default:
-        return ''
+        return `${indent}  ${node.key}: ${stringify(node.value, depth + 1)}`
+      default: return ''
     }
   })
-
-  return `{\n${lines.join('\n')}\n}`
+  return lines.join('\n')
 }
+
+const stylish = tree => `{\n${format(tree)}\n}`
 
 export default stylish

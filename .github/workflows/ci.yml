@@ -25,10 +25,11 @@ jobs:
       - name: Run linter
         run: make lint
         
-      - name: Run tests with coveraged
+      - name: Run tests with coverage
         run: make test-coverage
 
-       - name: SonarQube Scan
+      - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          

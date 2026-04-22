@@ -10,7 +10,7 @@ const formatValue = (value) => {
 
 const plain = (diff, parentPath = '') => {
   const lines = diff
-    .filter(item => item.type !== 'unchanged')
+    .filter(item => item.type !== 'unchanged' && item.type !== 'nested')
     .map((item) => {
       const fullPath = parentPath ? `${parentPath}.${item.key}` : item.key
 
@@ -25,6 +25,7 @@ const plain = (diff, parentPath = '') => {
           return ''
       }
     })
+    .filter(Boolean)
 
   return lines.join('\n')
 }

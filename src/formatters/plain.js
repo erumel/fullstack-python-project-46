@@ -10,11 +10,14 @@ const formatValue = (value) => {
 
 const plain = (diff, parentPath = '') => {
   const lines = diff
-    .filter(item => item.type !== 'unchanged' && item.type !== 'nested')
+    .filter(item => item.type !== 'unchanged')
     .map((item) => {
       const fullPath = parentPath ? `${parentPath}.${item.key}` : item.key
 
       switch (item.type) {
+        case 'nested':
+          // Рекурсивно обрабатываем вложенные узлы
+          return plain(item.children, fullPath)
         case 'added':
           return `Property '${fullPath}' was added with value: ${formatValue(item.value)}`
         case 'removed':
@@ -25,6 +28,7 @@ const plain = (diff, parentPath = '') => {
           return ''
       }
     })
+    .flat()
     .filter(Boolean)
 
   return lines.join('\n')
